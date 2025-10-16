@@ -45,7 +45,7 @@ window.onload = () => {
     }
   });
 
-  // Funcionalidad del panel superior
+
   openPanelBtn.addEventListener('click', () => {
     topPanel.style.height = '80vh'; 
     topPanel.classList.add('open');
