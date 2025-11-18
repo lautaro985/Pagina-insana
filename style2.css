@@ -43,7 +43,7 @@ body {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 100;
+  z-index: 1001;
   top: 0;
   left: 0;
   background-color: #111;
@@ -80,7 +80,7 @@ body {
   position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 999;
+  z-index: 1002;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -131,6 +131,7 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+
 .galeria {
   display: grid;
   grid-template-columns: 1fr 1fr; 
@@ -144,6 +145,7 @@ section {
   height: auto; 
   border-radius: 8px; 
 }
+
 .enlace {
   display: inline-block;
   background-color: #FF7F50;
@@ -211,6 +213,7 @@ footer {
     margin: 20px auto;
   }
 }
+
 .social-icon {
   display: flex;
   justify-content: center;
@@ -235,14 +238,17 @@ footer {
 }
 .icon-elem:nth-child(1) .icon:hover { 
   color: #FF0000;
-}.icon-elem:nth-child(2) .icon:hover { 
+}
+.icon-elem:nth-child(2) .icon:hover { 
   color: #E4405F;
-}.icon-elem:nth-child(3) .icon:hover { 
+}
+.icon-elem:nth-child(3) .icon:hover { 
   color: #1DA1F2;
 }
 .icon-elem:nth-child(4) .icon:hover {
   color: #25D366;
 }
+
 .pantalla-inicio {
   position: fixed;
   top: 0;
@@ -264,4 +270,57 @@ footer {
   text-shadow: 0 0 15px red, 0 0 25px crimson;
   animation: parpadeo 2s infinite;
   text-align: center;
+}
+
+/* 🔦 LINTERNA */
+/* 🔦 LINTERNA MEJORADA */
+.luz-linterna {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+
+  /* 🔥 ILUMINACIÓN MÁS FUERTE Y FONDO MENOS OSCURO */
+  background: radial-gradient(
+    circle 220px at var(--x, 50%) var(--y, 50%),
+    rgba(255,255,255,0.12) 0%,
+    rgba(0,0,0,0.75) 75%
+  );
+
+  z-index: 2000; /* tapa todo pero no molesta */
+  transition: background 0.05s ease-out, opacity 0.3s ease;
+
+  opacity: 1;
+
+  /* 🔧 Agregar temblor + parpadeo */
+  animation: jitter 0.15s infinite alternate ease-in-out,
+             flicker 1.6s infinite ease-in-out;
+}
+
+/* apagado cuando se abre menú */
+.luz-off {
+  opacity: 1 !important; /* ahora NO desaparece */
+}
+
+/* 🔥 temblor leve de linterna */
+@keyframes jitter {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(1.7px, -1.7px); }
+}
+
+/* 🔥 parpadeos terroríficos */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 0.93; }
+  50% { opacity: 0.7; }
+  52% { opacity: 0.95; }
+  70% { opacity: 0.85; }
+  72% { opacity: 0.6; }
+}
+
+
+.luz-off {
+  opacity: 0 !important;
 }
