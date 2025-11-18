@@ -272,8 +272,6 @@ footer {
   text-align: center;
 }
 
-/* 🔦 LINTERNA */
-/* 🔦 LINTERNA MEJORADA */
 .luz-linterna {
   position: fixed;
   top: 0;
@@ -281,36 +279,23 @@ footer {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-
-  /* 🔥 ILUMINACIÓN MÁS FUERTE Y FONDO MENOS OSCURO */
   background: radial-gradient(
     circle 220px at var(--x, 50%) var(--y, 50%),
     rgba(255,255,255,0.12) 0%,
     rgba(0,0,0,0.75) 75%
   );
-
-  z-index: 2000; /* tapa todo pero no molesta */
+  z-index: 2000;
   transition: background 0.05s ease-out, opacity 0.3s ease;
-
   opacity: 1;
-
-  /* 🔧 Agregar temblor + parpadeo */
   animation: jitter 0.15s infinite alternate ease-in-out,
              flicker 1.6s infinite ease-in-out;
 }
 
-/* apagado cuando se abre menú */
-.luz-off {
-  opacity: 1 !important; /* ahora NO desaparece */
-}
-
-/* 🔥 temblor leve de linterna */
 @keyframes jitter {
   0% { transform: translate(0, 0); }
   100% { transform: translate(1.7px, -1.7px); }
 }
 
-/* 🔥 parpadeos terroríficos */
 @keyframes flicker {
   0%, 100% { opacity: 1; }
   48% { opacity: 0.93; }

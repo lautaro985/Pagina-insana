@@ -21,8 +21,6 @@ window.onload = () => {
     updateSlide();
   });
 
-
- 
   let startX = 0;
   let isDragging = false;
 
@@ -42,10 +40,8 @@ window.onload = () => {
     }
   });
 
-
-
   openPanelBtn.addEventListener('click', () => {
-    topPanel.style.height = '80vh'; 
+    topPanel.style.height = '80vh';
     topPanel.classList.add('open');
   });
 
@@ -55,16 +51,12 @@ window.onload = () => {
   });
 };
 
-
-
 document.addEventListener("mousemove", (e) => {
   const luz = document.querySelector(".luz-linterna");
   if (!luz) return;
   luz.style.setProperty("--x", `${e.clientX}px`);
   luz.style.setProperty("--y", `${e.clientY}px`);
 });
-
-
 
 document.addEventListener("click", () => {
   const sonidos = [
@@ -88,8 +80,14 @@ function reproducirPasosMisteriosos() {
   let fade = setInterval(() => {
     vol += 0.02;
     pasos.volume = vol;
-
     if (vol >= 1) clearInterval(fade);
-
   }, 300);
 }
+
+function iniciarPasosAleatorios() {
+  setInterval(() => {
+    if (Math.random() < 0.20) reproducirPasosMisteriosos();
+  }, 5000);
+}
+
+document.addEventListener("DOMContentLoaded", iniciarPasosAleatorios);
